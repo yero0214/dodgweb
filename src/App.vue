@@ -2,7 +2,7 @@
   <div id="app">
     <header>
       <nav>
-        <h1>닷.GG</h1>
+        <h1>닷지.org</h1>
         <router-link to="/login" v-if="!$store.state.state">Login</router-link>
         <router-link to="/register" v-if="!$store.state.state">Register</router-link>
         <a v-if="$store.state.state" @click="signOut()">Sign out</a>
