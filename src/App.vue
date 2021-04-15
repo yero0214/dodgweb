@@ -1,25 +1,23 @@
 <template>
   <div id="app">
-    <back></back>
-    
-    <headerc v-if="0"></headerc>
-    <!-- <router-view/> -->
-       
-    <!-- dodg.org isn't endorsed by Riot Games and doesn't reflect the views or opinions of
-    Riot Games or anyone officially involved in producing or managing Riot Games properties.
-    Riot Games, and all associated properties are trademarks or registered trademarks of Riot Games, Inc. -->
+    <back/>
+    <top v-if="0"/>
+    <router-view v-if="1"/>
+    <bottom v-if="0"/>
   </div>
 </template>
 
 <script>
 import {auth} from '@/firebase';
-import Headerc from '@/components/Headerc'
+import Top from '@/components/Top'
 import Back from '@/components/Back'
+import Bottom from '@/components/Bottom'
 
 export default {
   components: {
-    'headerc':Headerc,
+    'top':Top,
     'back':Back,
+    'bottom':Bottom
   },
   data (){
     return{

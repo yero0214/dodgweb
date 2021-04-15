@@ -1,7 +1,5 @@
 <template>
-    <div class="back">
-        <div class="bg-img"></div>
-    </div>
+    <div class="bg-img"></div>
 </template>
 <script>
 export default {
@@ -15,8 +13,10 @@ export default {
     height: 100%;
     width: 100%;
 
+    z-index: -1;
+
     filter: blur(10px);
-    -webkit-filter: blur(8px);
+    -webkit-filter: blur(10px);
     
     background-position: center;
     background-repeat: no-repeat;
