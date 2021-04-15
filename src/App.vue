@@ -1,16 +1,11 @@
 <template>
   <div id="app">
-    <header>
-      <nav>
-        <h1>DODG.ORG</h1>
-        <router-link to="/login" v-if="!$store.state.state">Login</router-link>
-        <router-link to="/register" v-if="!$store.state.state">Register</router-link>
-        <a v-if="$store.state.state" @click="signOut()">Sign out</a>
-      </nav>
-    </header>
-    <router-view/>
+    <back></back>
+    
+    <headerc v-if="0"></headerc>
+    <!-- <router-view/> -->
        
-    <!-- loh.gg isn't endorsed by Riot Games and doesn't reflect the views or opinions of
+    <!-- dodg.org isn't endorsed by Riot Games and doesn't reflect the views or opinions of
     Riot Games or anyone officially involved in producing or managing Riot Games properties.
     Riot Games, and all associated properties are trademarks or registered trademarks of Riot Games, Inc. -->
   </div>
@@ -18,26 +13,35 @@
 
 <script>
 import {auth} from '@/firebase';
+import Headerc from '@/components/Headerc'
+import Back from '@/components/Back'
 
 export default {
+  components: {
+    'headerc':Headerc,
+    'back':Back,
+  },
   data (){
     return{
 
     }
   },
-    methods:{
-      signOut(){
-        auth.signOut()
-          .then(() => console.log('signed out'))
-      }
+  methods:{
+    signOut(){
+      auth.signOut()
+        .then(() => console.log('signed out'))
     }
+  }
 }
 </script>
 
 <style>
+* {
+  box-sizing: border-box;
+}
 body{
   margin: 0;
-  background: #fafafa;
+  background: #ffffff;
 }
 body,h1,h2,p,a,input{
   color: #555;
@@ -72,4 +76,5 @@ header h1{
   left: 20px;
   top: 15px;
 }
+
 </style>

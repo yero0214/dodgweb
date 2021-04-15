@@ -72,3 +72,17 @@ export default {
   }
 }
 </script>
+<style scoped>
+.search {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    width: 500px;
+    height: 400px;
+    border-radius: 0.5rem;
+    text-align: center;
+    box-shadow: 0 2px 10px 0 rgba(0,0,0,0.10);
+}
+</style>
