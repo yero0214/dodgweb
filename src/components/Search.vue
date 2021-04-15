@@ -61,7 +61,7 @@ export default {
   },
   methods:{
       search(){
-          axios.get('https://datggserver-dxjx2xunna-du.a.run.app/eid?name='+ this.name)
+          axios.get('https://dodgserver-dxjx2xunna-du.a.run.app/eid?name='+ this.name)
           .then((response) => {
             this.items = response.data;
           })
