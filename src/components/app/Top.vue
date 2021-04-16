@@ -12,3 +12,19 @@
 export default {
 }
 </script>
+<style scoped>
+header{
+  width: 100%;
+  padding: 20px;
+  text-align: right;
+  background: white;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 6px rgba(0,0,0,0.1);
+}
+header h1{
+  margin: 0;
+  position: absolute;
+  left: 20px;
+  top: 15px;
+}
+</style>

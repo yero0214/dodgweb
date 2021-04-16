@@ -2,6 +2,7 @@
   <div id="app">
     <back/>
     <top v-if="0"/>
+    <left/>
     <router-view v-if="1"/>
     <bottom v-if="0"/>
   </div>
@@ -9,15 +10,17 @@
 
 <script>
 import {auth} from '@/firebase';
-import Top from '@/components/Top'
-import Back from '@/components/Back'
-import Bottom from '@/components/Bottom'
+import Top from '@/components/app/Top'
+import Back from '@/components/app/Back'
+import Bottom from '@/components/app/Bottom'
+import Left from '@/components/app/Left'
 
 export default {
   components: {
     'top':Top,
     'back':Back,
-    'bottom':Bottom
+    'bottom':Bottom,
+    'left':Left
   },
   data (){
     return{
@@ -50,14 +53,6 @@ ul{
   margin: 0;
   padding: 0;
 }
-header{
-  width: 100%;
-  padding: 20px;
-  text-align: right;
-  background: white;
-  box-sizing: border-box;
-  box-shadow: 0px 0px 6px rgba(0,0,0,0.1);
-}
 a{
   transition: 0.2s;
   margin-left: 10px;
@@ -68,11 +63,6 @@ a:hover{
   background: gray;
   color: white;
 }
-header h1{
-  margin: 0;
-  position: absolute;
-  left: 20px;
-  top: 15px;
-}
+
 
 </style>
