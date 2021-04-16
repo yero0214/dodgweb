@@ -10,7 +10,7 @@ export default {
 </script>
 <style scoped>
 .background-image {
-    background-image:url('../../assets/Howling Abyss.png');
+    background-image:url('../../assets/Howling Abyss.jpg');
     /* background-color: rgb(248, 248, 248); */
     background-repeat:no-repeat;
     background-size:cover;
