@@ -1,28 +1,26 @@
 <template>
 <div>
   <div class="login" @click="goHome()">
-    
   </div>
   <div class="login-content">
       <div class="title">
-        <h1>Login</h1>
+        <h1>로그인</h1>
       </div>
       <div class="content">
         <div class="email">
           <input type="text" placeholder="Email" autocomplete="off" v-model="email" @keyup.enter="login()">
         </div>
         <div class="pwd">
-          <input type="text" placeholder="Password" autocomplete="off" v-model="pwd" @keyup.enter="login()">
+          <input type="password" placeholder="Password" autocomplete="off" v-model="pwd" @keyup.enter="login()">
         </div>
-        <span>{{errorMsg}}</span>
+        <span class="errMsg">{{errorMsg}}</span>
         <div class="button">
-          <button @click="login()">Login</button>
+          <button v-if="!active" class="inactive"><span class="material-icons md-dark md-inactive md-36">arrow_forward</span></button>
+          <button v-if="active" class="active" @click="login()"><span class="material-icons md-light md-36">arrow_forward</span></button>
         </div>
         <div class="link">
-          <strong>No account?</strong><router-link to="/register">Register instead</router-link>
-        </div>
-        <div class="home">
-          <router-link to="/">Go to home</router-link>
+          <router-link to="/register">계정 생성하기</router-link>
+          <router-link class="aMargin" to="/">홈으로 가기</router-link>
         </div>
       </div>
     </div>
@@ -45,9 +43,39 @@ export default {
       email: '',
       pwd: '',
       errorMsg: '',
+      active: false,
+      state:{
+        email:false,
+        pwd:false,
+      },
+    }
+  },
+  watch: {
+    email(){
+      if(this.email != ''){
+        this.state.email = true;
+      } else{
+        this.state.email = false;
+      }
+      this.activeState();
+    },
+    pwd(){
+      if(this.pwd != ''){
+        this.state.pwd = true;
+      } else{
+        this.state.pwd = false;
+      }
+      this.activeState();
     }
   },
   methods:{
+    activeState(){
+      if(this.state.email == true && this.state.pwd == true){
+        this.active = true;
+      } else{
+        this.active = false;
+      }
+    },
     login(){
       const email = this.email;
       const pwd = this.pwd;
@@ -75,11 +103,10 @@ export default {
 <style scoped>
 .login {
     position: fixed;
-    left: 0;
-    top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgb(250, 250, 250);
+    background-color: rgba(0, 0, 0, 0.486);
+    z-index: 10px;
 }
 .login-content {
     position: absolute;
@@ -91,22 +118,22 @@ export default {
     height: 400px;
     border-radius: 0.5rem;
     text-align: center;
-    box-shadow: 0 2px 10px 0 rgba(0,0,0,0.10);
+    z-index: 11px;
 }
 .title{
   margin-top: 50px;
 }
 .title h1{
-  font-size: 40px;
+  color: rgb(49, 49, 49);
+  font-size: 45px;
 }
 .content {
-  margin-top: 35px;
+  margin-top: 30px;
 }
-
 .pwd{
   margin-top: 10px;
 }
-input[type=text] {
+input[type=text], input[type=password] {
   width:330px;
   height:40px;
   border: none;
@@ -115,41 +142,45 @@ input[type=text] {
   outline: none;
   font-size:17px;
 }
-input[type=text]:hover{
+input[type=text]:hover,input[type=password]:hover{
   border-bottom:3px solid #555;
 }
-input[type=text]:focus{
+input[type=text]:focus,input[type=password]:focus{
   border-bottom:3px solid #555;
 }
-span{
+.errMsg{
   color:rgb(230, 59, 59);
   font-size: 16px;
 }
 .button{
   margin-top: 20px;
 }
-button{
-  transition-duration: 0.1s;
-  border-radius: 2px;
-  font-size: 17px;
-  color:#fff;
-  padding: 6px 50px;
-  background-color:rgb(155, 155, 155);
-  border:none;
+.inactive{
+  border-radius: 20px;
+  padding: 10px 14px;
+  background-color:rgb(255, 255, 255);
+  border:2px solid rgb(196, 196, 196);
   outline:none;
 }
-button:hover{
-  box-shadow: 0 2px 7px 0 rgba(0,0,0,0.24);
+.active{
+  border-radius: 20px;
+  padding: 12px 16px;
+  background-color:rgb(204, 58, 58);
+  border:none;
+  outline:none;
+  transition-duration: 500ms;
 }
-button:active{
-  background-color:rgb(85, 85, 85);
-  
+.active:hover{
+  background-color:rgb(182, 49, 49);
 }
 .link{
-  margin-top: 20px;
+  margin-top: 25px;
 }
-.home{
-  margin-top: 20px;
+.link a{
+  font-family: 'Gothic A1';
+  color: rgb(49, 49, 49);
 }
-
+.link a:hover{
+  border-bottom: 2px solid black;
+}
 </style>

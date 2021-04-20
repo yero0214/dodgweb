@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <back/>
-    <top v-if="0"/>
     <left/>
     <router-view v-if="1"/>
     <bottom v-if="0"/>
@@ -9,60 +8,74 @@
 </template>
 
 <script>
-import {auth} from '@/firebase';
-import Top from '@/components/app/Top'
 import Back from '@/components/app/Back'
 import Bottom from '@/components/app/Bottom'
 import Left from '@/components/app/Left'
 
 export default {
   components: {
-    'top':Top,
     'back':Back,
     'bottom':Bottom,
     'left':Left
   },
-  data (){
-    return{
-
-    }
-  },
-  methods:{
-    signOut(){
-      auth.signOut()
-        .then(() => console.log('signed out'))
-    }
-  }
 }
 </script>
-
 <style>
 * {
   box-sizing: border-box;
 }
-body{
-  margin: 0;
-  background: #ffffff;
-}
-body,h1,h2,p,a,input{
-  color: #555;
-  font-family: Consolas, Arial;
-  text-decoration: none;
-}
-ul{
+body,ul{
   margin: 0;
   padding: 0;
 }
 a{
-  transition: 0.2s;
-  margin-left: 10px;
-  padding: 4px;
   cursor: pointer;
 }
-a:hover{
-  background: gray;
+.aMargin{
+  margin-left: 20px;
+}
+body,h1,h2,p,a,input{
+  font-family: 'Black Han Sans', Arial;
+  text-decoration: none;
+}
+body,h1,h2,p,a{
   color: white;
 }
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
 
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
 
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+/* Rules for sizing the icon. */
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+/* Rules for using icons as black on a light background. */
+.material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
+.material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
+
+/* Rules for using icons as white on a dark background. */
+.material-icons.md-light { color: rgba(255, 255, 255, 1); }
+.material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
 </style>
