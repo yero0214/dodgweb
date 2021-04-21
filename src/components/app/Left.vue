@@ -4,8 +4,8 @@
             <div v-show="!show" class="navbar"></div>
             <div v-show="show" class="navlist">
                 <ul>
-                    <li><router-link to="/login" v-if="!$store.state.state">로그인</router-link></li>
-                    <li><router-link to="/register" v-if="!$store.state.state">회원가입</router-link></li>
+                    <li><a v-if="!$store.state.state" @click="login()">로그인</a></li>
+                    <li><a v-if="!$store.state.state" @click="register()">회원가입</a></li>
                     <li><a v-if="$store.state.state" @click="signOut()">로그아웃</a></li>
                 </ul>
             </div>
@@ -17,8 +17,8 @@
             <div v-show="!show" class="navbar"></div>
             <div v-show="show" class="navlist">
                 <ul>
-                    <li><router-link to="/login" v-if="!$store.state.state">로그인</router-link></li>
-                    <li><router-link to="/register" v-if="!$store.state.state">회원가입</router-link></li>
+                    <li><a v-if="!$store.state.state" @click="login()">로그인</a></li>
+                    <li><a v-if="!$store.state.state" @click="register()">회원가입</a></li>
                     <li><a v-if="$store.state.state" @click="signOut()">로그아웃</a></li>
                 </ul>
             </div>
@@ -38,6 +38,12 @@ export default {
         }        
     },
     methods:{
+        login(){
+            this.$store.state.loginPage = true;
+        },
+        register(){
+            this.$store.state.regiPage = true;
+        },
         signOut(){
             auth.signOut()
             .then(() => console.log('signed out'))

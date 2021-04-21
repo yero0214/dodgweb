@@ -13,14 +13,15 @@ new Vue({
   created(){
     auth.onAuthStateChanged(user => {
       if (user){
-        this.$router.push('/')
+        // this.$router.push('/')
+        this.$store.state.loginPage = false;
         this.$store.state.state = true;
         console.log("login detected")
       } else{
-        this.$router.push('/login')
+        // this.$router.push('/login')
         this.$store.state.state = false;
         console.log("sign out detected")
       }
-  });
+    });
   }
 }).$mount('#app')

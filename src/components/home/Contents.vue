@@ -59,7 +59,7 @@ export default {
     background-color:white;
     position:absolute;
     width: 100%;
-    height: 1000px;
+    height: 100%;
     z-index: 1;
     animation-name:showUp;
     animation-duration:500ms;

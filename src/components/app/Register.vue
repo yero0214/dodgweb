@@ -1,26 +1,25 @@
 <template>
 <div>
-  <div class="login" @click="goHome()">
-  </div>
-  <div class="login-content">
+  <div class="register" @click="closeRegister()"></div>
+  <div class="register-content">
       <div class="title">
-        <h1>로그인</h1>
+        <h1>회원가입</h1>
       </div>
       <div class="content">
         <div class="email">
-          <input type="text" placeholder="Email" autocomplete="off" v-model="email" @keyup.enter="login()">
+          <input type="text" placeholder="Email" autocomplete="off" v-model="email" @keyup.enter="register()">
         </div>
         <div class="pwd">
-          <input type="password" placeholder="Password" autocomplete="off" v-model="pwd" @keyup.enter="login()">
+          <input type="password" placeholder="Password" autocomplete="off" v-model="pwd" @keyup.enter="register()">
         </div>
-        <span class="errMsg">{{errorMsg}}</span>
+        <span>{{errorMsg}}</span>
         <div class="button">
           <button v-if="!active" class="inactive"><span class="material-icons md-dark md-inactive md-36">arrow_forward</span></button>
           <button v-if="active" class="active" @click="login()"><span class="material-icons md-light md-36">arrow_forward</span></button>
         </div>
         <div class="link">
-          <router-link to="/register">계정 생성하기</router-link>
-          <router-link class="aMargin" to="/">홈으로 가기</router-link>
+          <a @click="goLogin()">로그인 하기</a>
+          <a class="aMargin" @click="closeRegister()">돌아가기</a>
         </div>
       </div>
     </div>
@@ -34,7 +33,6 @@ import {auth} from '@/firebase';
 import {validation} from '@/common'
 
 export default {
-  name: 'Login',
   components: {
 
   },
@@ -76,7 +74,7 @@ export default {
         this.active = false;
       }
     },
-    login(){
+    register(){
       const email = this.email;
       const pwd = this.pwd;
 
@@ -86,29 +84,33 @@ export default {
         return;
       }
 
-      auth.signInWithEmailAndPassword(email, pwd)
-        .then(user => {
-          console.log('logged in', user);
+      auth.createUserWithEmailAndPassword(email, pwd)
+        .then(user =>{
+          console.log('registered',user);
         })
         .catch(error => {
           this.errorMsg = error.message;
         })
     },
-    goHome(){
-      this.$router.push('/')
+    goLogin(){
+      this.closeRegister();
+      this.$store.state.loginPage = true;
     },
+    closeRegister(){
+      this.$store.state.regiPage = false;
+    }
   }
 }
 </script>
 <style scoped>
-.login {
+.register {
     position: fixed;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.486);
     z-index: 10px;
 }
-.login-content {
+.register-content {
     position: absolute;
     top: 50%;
     left: 50%;

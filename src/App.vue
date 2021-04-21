@@ -4,6 +4,8 @@
     <left/>
     <router-view v-if="1"/>
     <bottom v-if="0"/>
+    <login v-if="loginPage"/>
+    <register v-if="regiPage"/>
   </div>
 </template>
 
@@ -11,13 +13,25 @@
 import Back from '@/components/app/Back'
 import Bottom from '@/components/app/Bottom'
 import Left from '@/components/app/Left'
+import Login from '@/components/app/Login'
+import Register from '@/components/app/Register'
 
 export default {
   components: {
     'back':Back,
     'bottom':Bottom,
-    'left':Left
+    'left':Left,
+    'login':Login,
+    'register':Register,
   },
+  computed:{
+    loginPage(){
+      return this.$store.state.loginPage;
+    },
+    regiPage(){
+      return this.$store.state.regiPage;
+    }
+  }
 }
 </script>
 <style>
