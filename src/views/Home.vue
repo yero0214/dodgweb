@@ -1,8 +1,8 @@
 <template>
   <div class="home">
-    <title-com/>
-    <search v-if="1"/>
-    <contents/>
+    <title-com class="title"/>
+    <search class="search"/>  
+    <contents v-if="show" class="contents"/>
   </div>
 </template>
 
@@ -18,6 +18,21 @@ export default {
     'title-com':Title,
     'search':Search,
     'contents':Contents,
+  },
+  data(){
+    return{
+    }
+  },
+  methods:{
+
+  },
+  computed: {
+    show(){
+      return this.$store.state.searched;
+    }
   }
 }
 </script>
+<style scoped>
+
+</style>

@@ -18,7 +18,7 @@
           <button v-if="active" class="active" @click="login()"><span class="material-icons md-light md-36">arrow_forward</span></button>
         </div>
         <div class="link">
-          <router-link to="/register">로그인 하기</router-link>
+          <router-link to="/login">로그인 하기</router-link>
           <router-link class="aMargin" to="/">홈으로 가기</router-link>
         </div>
       </div>

@@ -16,7 +16,7 @@ export default {
     background-position:center;
     width:100%;
     height:100%;
-    position: fixed;
+    position: absolute;
     z-index: -10;
 }
 </style>

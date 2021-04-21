@@ -1,94 +1,77 @@
 <template>
   <div class="search">
-    <input type="text" v-model="name" @keyup.enter="search()">
-
-
-    <!-- <div>
-      <span @click="page = 'RANKED_SOLO_5x5'">solo</span>&nbsp;&nbsp;&nbsp;&nbsp;
-      <span @click="page = 'RANKED_FLEX_SR'">flex</span>
-    </div>
-
-    <div v-for="item in items" :key="item.id">
-      <div v-if="item.queueType == page">
-        {{item.tier}}
-        {{item.rank}}
-        {{item.leaguePoints}}<br/>
-        {{item.wins}}<br/>
-        {{item.losses}}
-      </div>
-    </div> -->
+    <input type="text" placeholder="   소환사명을 입력하세요." v-model="name" @keyup.enter="search()">
+    <button @mouseenter="hover=true" @mouseleave="hover=false" @click="search()">
+      <span v-if="!hover" class="material-icons">search</span>
+      <span v-if="hover" class="material-icons md-light">search</span>
+    </button>
+    <div v-if="error" class="msg">소환사를 찾을 수 없습니다.</div>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
-
 export default {
   name: 'Search',
   data (){
     return{
         name: '',
-        page: 'RANKED_SOLO_5x5',
-        items: [
-        {
-          "leagueId": null,
-          "queueType": null,
-          "tier": null,
-          "rank": null,
-          "summonerId": null,
-          "summonerName": null,
-          "leaguePoints": null,
-          "wins": null,
-          "losses": null,
-          "veteran": null,
-          "inactive": null,
-          "freshBlood": null,
-          "hotStreak": null
-        },
-        {
-          "leagueId": null,
-          "queueType": null,
-          "tier": null,
-          "rank": null,
-          "summonerId": null,
-          "summonerName": null,
-          "leaguePoints": null,
-          "wins": null,
-          "losses": null,
-        }
-      ],
+        hover: false,
     }
   },
   methods:{
       search(){
-          axios.get('https://dodgserver-dxjx2xunna-du.a.run.app/eid?name='+ this.name)
-          .then((response) => {
-            this.items = response.data;
-          })
-          .catch((error) => {
-            console.log(error.message);
-          })
+        if(this.name == '')return;
+        else this.$store.dispatch('search',this.name)
       }
+  },
+  computed:{
+    error(){
+      return this.$store.state.error;
+    }
   }
 }
 </script>
 <style scoped>
 .search {
+  background-color: white;
   position: absolute;
-  top: 570px;
+  top: 390px;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 400px;
-  border-radius: 0.5rem;
-  text-align: center;
-    /* box-shadow: 0 2px 10px 0 rgba(0,0,0,0.10); */
+  width:570px;
+  border-radius: 1rem;
 }
 .search input[type=text]{
-  width:570px;
-  height: 55px;
-  /* box-shadow: 0 2px 10px 0 rgba(0,0,0,0.10); */
-  border-radius: 0.5rem;
+  margin-left: 10px;
+  width:500px;
+  height: 45px;
+  padding:0px;
+  padding-top:3px;
+  border-radius: 1rem 0 0 1rem;
   outline: none;
   border: none;
+  font-size: 14px;
+  font-family: 'Gothic A1';
+}
+.search button{
+  background-color: rgb(255, 255, 255);
+  width: 60px;
+  height: 55px;
+  border: none;
+  outline: none;
+  padding:0px;
+  border-radius: 0 1rem 1rem 0;
+  transition-duration: 200ms;
+}
+.search button:hover {
+  background-color: rgb(228, 31, 31);
+}
+.msg{
+  position: absolute;
+  top: 70px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgb(224, 24, 24);
+  font-family: 'Gothic A1';
 }
 </style>

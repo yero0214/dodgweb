@@ -13,8 +13,11 @@ export default {
     position: absolute;
     left: 50%;
     top: 275px;
+    width:500px;
+    height:110px;
     transform: translate(-50%, -50%);
     border-radius: 0.5rem;
     text-align: center;
 }
+
 </style>

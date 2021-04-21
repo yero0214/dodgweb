@@ -1,15 +1,30 @@
 <template>
     <div class="nav" @mouseenter="show=true" @mouseleave="show=false">
-        <div v-show="!show" class="navbar"></div>
-        <div v-show="show" class="navlist">
-            <ul>
-                <li><router-link to="/login" v-if="!$store.state.state">로그인</router-link></li>
-                <li><router-link to="/register" v-if="!$store.state.state">회원가입</router-link></li>
-                <li><a v-if="$store.state.state" @click="signOut()">로그아웃</a></li>
-            </ul>
+        <div v-if="!searched">
+            <div v-show="!show" class="navbar"></div>
+            <div v-show="show" class="navlist">
+                <ul>
+                    <li><router-link to="/login" v-if="!$store.state.state">로그인</router-link></li>
+                    <li><router-link to="/register" v-if="!$store.state.state">회원가입</router-link></li>
+                    <li><a v-if="$store.state.state" @click="signOut()">로그아웃</a></li>
+                </ul>
+            </div>
+            <img v-if="!show" class="arrow" src="@/assets/menu.png">
+            <img v-if="show" class="arrowhover" src="@/assets/menu.png">    
         </div>
-        <img v-show="!show" class="arrow" src="@/assets/menu.png">
-        <img v-show="show" class="arrowhover" src="@/assets/menu.png">
+
+        <div v-if="searched" class="searched">
+            <div v-show="!show" class="navbar"></div>
+            <div v-show="show" class="navlist">
+                <ul>
+                    <li><router-link to="/login" v-if="!$store.state.state">로그인</router-link></li>
+                    <li><router-link to="/register" v-if="!$store.state.state">회원가입</router-link></li>
+                    <li><a v-if="$store.state.state" @click="signOut()">로그아웃</a></li>
+                </ul>
+            </div>
+            <img v-if="!show" class="arrow" src="@/assets/menu black.png">
+            <img v-if="show" class="arrowhover" src="@/assets/menu black.png">    
+        </div>
 
     </div>
 </template>
@@ -27,6 +42,11 @@ export default {
             auth.signOut()
             .then(() => console.log('signed out'))
         },
+    },
+    computed: {
+        searched(){
+            return this.$store.state.searched;
+        }
     }
 }
 </script>
@@ -35,6 +55,7 @@ export default {
     position: fixed;
     height:100%;
     width:45px;
+    z-index: 100;
 }
 .navbar{
     position: fixed;
@@ -74,7 +95,7 @@ export default {
     position: fixed;
     top: 50%;
     left:2px;
-    z-index: 2;
+    z-index: 101;
 }
 .arrowhover{
     animation-duration: 200ms;
@@ -82,7 +103,7 @@ export default {
     position: fixed;
     top: 50%;
     left:155px;
-    z-index: 2;
+    z-index: 101;
 }
 @keyframes slide{
     from {
@@ -91,5 +112,14 @@ export default {
     to{
         margin-left:0;
     }
+}
+.searched a{
+    color: black;
+}
+.searched .navbar{
+    border-right: solid rgba(0, 0, 0, 0.26) thin;
+}
+.searched .navlist{
+    border-right: solid rgba(0, 0, 0, 0.26) thin;
 }
 </style>
