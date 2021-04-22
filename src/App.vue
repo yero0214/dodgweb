@@ -24,6 +24,9 @@ export default {
     'login':Login,
     'register':Register,
   },
+  watch:{
+    
+  },
   computed:{
     loginPage(){
       return this.$store.state.loginPage;

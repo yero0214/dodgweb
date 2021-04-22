@@ -9,6 +9,11 @@ const routes = [
     name: 'Home',
     component: Home
   },
+  {
+    path: '/Summoner',
+    name: 'Summoner',
+    component: () => import("../views/Summoner.vue")
+  },
 ]
 
 const router = new VueRouter({

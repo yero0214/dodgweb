@@ -1,6 +1,6 @@
 <template>
     <div class="nav" @mouseenter="show=true" @mouseleave="show=false">
-        <div v-if="!searched">
+        <div>
             <div v-show="!show" class="navbar"></div>
             <div v-show="show" class="navlist">
                 <ul>
@@ -13,7 +13,7 @@
             <img v-if="show" class="arrowhover" src="@/assets/menu.png">    
         </div>
 
-        <div v-if="searched" class="searched">
+        <!-- <div v-if="searched" class="searched">
             <div v-show="!show" class="navbar"></div>
             <div v-show="show" class="navlist">
                 <ul>
@@ -24,7 +24,7 @@
             </div>
             <img v-if="!show" class="arrow" src="@/assets/menu black.png">
             <img v-if="show" class="arrowhover" src="@/assets/menu black.png">    
-        </div>
+        </div> -->
 
     </div>
 </template>
@@ -50,9 +50,7 @@ export default {
         },
     },
     computed: {
-        searched(){
-            return this.$store.state.searched;
-        }
+
     }
 }
 </script>

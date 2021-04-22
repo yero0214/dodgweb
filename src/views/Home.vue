@@ -2,22 +2,19 @@
   <div class="home">
     <title-com class="title"/>
     <search class="search"/>  
-    <contents v-if="show" class="contents"/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import Search from '@/components/home/Search'
+import Search from '@/components/widget/Search'
 import Title from '@/components/home/Title'
-import Contents from '@/components/home/Contents'
 
 export default {
   name: 'Home',
   components: {
     'title-com':Title,
     'search':Search,
-    'contents':Contents,
   },
   data(){
     return{
@@ -34,5 +31,10 @@ export default {
 }
 </script>
 <style scoped>
-
+.search{
+  position: absolute;
+  top: 390px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 </style>

@@ -109,7 +109,7 @@ export default {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.486);
-    z-index: 10px;
+    z-index: 101;
 }
 .login-content {
     position: absolute;
@@ -121,7 +121,7 @@ export default {
     height: 400px;
     border-radius: 0.5rem;
     text-align: center;
-    z-index: 11px;
+    z-index: 102;
 }
 .title{
   margin-top: 50px;

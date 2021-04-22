@@ -9,13 +9,11 @@ export default new Vuex.Store({
         loginPage:false,
         regiPage:false,
         state: false,
-        searched: false,
-        error: false,
         name: '',
         items: [],
     },
     getters: {
-        searchResult: state =>{
+        searchResult(state){
             const searchResult = [];
             if(state.items[0].queueType == 'RANKED_SOLO_5x5'){
                 searchResult.push(state.items[0]);
@@ -25,7 +23,7 @@ export default new Vuex.Store({
                 searchResult.push(state.items[0]);
             }
             return searchResult;
-        }
+        },
     },
     mutations: {
         setInfo(state,data){
@@ -34,7 +32,6 @@ export default new Vuex.Store({
             }else{       
                 state.items = data;
                 state.error = false;
-                state.searched = true;
             }
             console.log(state.items);
         }
