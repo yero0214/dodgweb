@@ -88,6 +88,9 @@ export default {
       auth.signInWithEmailAndPassword(email, pwd)
         .then(user => {
           console.log('logged in', user);
+          this.$store.state.loginPage = false;
+          alert("로그인 되었습니다.")
+
         })
         .catch(error => {
           this.errorMsg = error.message;

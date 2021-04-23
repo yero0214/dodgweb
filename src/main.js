@@ -18,7 +18,7 @@ new Vue({
         this.$store.state.state = true;
         console.log("login detected")
       } else{
-        // this.$router.push('/login')
+        // this.$router.push('/')
         this.$store.state.state = false;
         console.log("sign out detected")
       }

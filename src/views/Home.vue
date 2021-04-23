@@ -31,6 +31,12 @@ export default {
 }
 </script>
 <style scoped>
+.title{
+    position: absolute;
+    left: 50%;
+    top: 275px;
+    transform: translate(-50%, -50%);
+}
 .search{
   position: absolute;
   top: 390px;

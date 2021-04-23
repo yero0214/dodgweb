@@ -12,10 +12,10 @@
         <div class="pwd">
           <input type="password" placeholder="Password" autocomplete="off" v-model="pwd" @keyup.enter="register()">
         </div>
-        <span>{{errorMsg}}</span>
+        <span class="errMsg">{{errorMsg}}</span>
         <div class="button">
           <button v-if="!active" class="inactive"><span class="material-icons md-dark md-inactive md-36">arrow_forward</span></button>
-          <button v-if="active" class="active" @click="login()"><span class="material-icons md-light md-36">arrow_forward</span></button>
+          <button v-if="active" class="active" @click="register()"><span class="material-icons md-light md-36">arrow_forward</span></button>
         </div>
         <div class="link">
           <a @click="goLogin()">로그인 하기</a>
@@ -87,6 +87,8 @@ export default {
       auth.createUserWithEmailAndPassword(email, pwd)
         .then(user =>{
           console.log('registered',user);
+          this.$store.state.regiPage = false;
+          alert("회원가입 되었습니다.")
         })
         .catch(error => {
           this.errorMsg = error.message;

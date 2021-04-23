@@ -19,10 +19,30 @@ export default {
   },
   methods:{
       async search(){
-        if(this.name == '')return;
+        if(this.name == ''){
+            alert("소환사명을 입력하세요");
+            return;
+          }
         else {
           await this.$store.dispatch('search',this.name);
-          this.$router.push('/summoner');
+          if(this.$store.state.items == '404' || this.$store.state.items == '403'){
+            this.$store.state.searchName = this.name;
+            
+            if(this.$router.currentRoute.path == '/error'){
+              return;
+           
+            } else{
+              this.$router.push('/error');
+            }
+            
+          }else{
+            if(this.$router.currentRoute.path == '/summoner'){
+              return;
+           
+            } else{
+              this.$router.push('/summoner');
+            }
+          }
         }
       }
   },

@@ -45,8 +45,9 @@ export default {
             this.$store.state.regiPage = true;
         },
         signOut(){
+            this.show = false;
             auth.signOut()
-            .then(() => console.log('signed out'))
+            .then(() => alert("로그아웃 되었습니다."))
         },
     },
     computed: {

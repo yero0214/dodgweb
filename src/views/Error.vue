@@ -1,34 +1,30 @@
 <template>
 <div class="frame">
-    <div class="summoner">
+    <div class="error">
         <router-link to="/" class="sum_title">DODG.ORG</router-link>
         <search class="search"/>
-        <recent class="recent" v-if="false"/>
-        <tier v-bind:type="[0]" class="solo"/>
-        <tier v-bind:type="[1]" class="flex"/>
-        <matches class="matches"/>
+
+        <div class="msg">
+            <span v-if="$store.state.items == '403'">현재 DODG.ORG 서비스를 이용하실 수 없습니다.</span> 
+            <span v-if="$store.state.items == '404'">{{$store.state.searchName}} 에 대한 검색 결과가 없습니다.</span>
+        </div>
     </div>
 </div>
 
 </template>
 <script>
 import Search from '@/components/widget/Search'
-import Tier from '@/components/summoner/Tier'
-import Matches from '@/components/summoner/Matches'
-import Recent from '@/components/summoner/Recent'
 
 export default {
     components: {
         'search':Search,
-        'tier':Tier,
-        'matches':Matches,
-        'recent':Recent,
+
     },
     data(){
         return{
             
         }
-    },
+    }
 }
 </script>
 <style scoped>
@@ -40,7 +36,7 @@ export default {
     min-width: 1500px;
     left: 10px;
 }
-.summoner{
+.error{
     position:absolute;
     width: 1500px;
     height: 790px;
@@ -60,28 +56,12 @@ export default {
     top: 15px;
     font-size: 40px;
 }
-.recent{
-    position: fixed;
-    left: 35px;
-    top: 85px;
-    font-size: 40px;   
-}
-.solo{
-    position: fixed;
-    left: 35px;
-    top: 440px;
-    font-size: 40px;
-}
-.flex{
-    position: fixed;
-    left: 420px;
-    top: 440px;
-    font-size: 40px;
-}
-.matches{
-    position: fixed;
-    left: 800px;
-    top: 85px;
+.msg{
+    position: absolute;
+    left: 350px;
+    top: 400px;
+
+    text-align: center;
     font-size: 40px;
 }
 </style>
