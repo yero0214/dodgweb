@@ -1,21 +1,26 @@
 <template>
     <div class="back">
         <div v-if="data != 'unranked'">
-            <div class="top">
-                <div v-if="this.type == 0">솔랭</div>
-                <div v-if="this.type == 1">자랭</div>
-            </div>
+            
             <div class="tier">
                 <img :src="require(`@/assets/tier/${data.tier}.png`)"/>
                 
-                {{data.tier}}&nbsp; {{data.rank}}
             </div>
-            <div class="winlose">
-                승리:{{data.wins}}&nbsp; 패배:{{data.losses}}
-            </div>
-            <div class="ratio">
-                승률:{{ratio.toFixed(1)}}%
-            </div>
+            <div class="text">
+                <div class="top">
+                    <div v-if="this.type == 0">솔랭</div>
+                    <div v-if="this.type == 1">자랭</div>
+                </div>
+                <div class="winlose">
+                    승리:{{data.wins}}&nbsp; 패배:{{data.losses}}
+                </div>
+                <div>
+                    {{data.tier}}&nbsp; {{data.rank}}
+                </div>
+                <div class="ratio">
+                    승률:{{ratio.toFixed(1)}}%
+                </div>
+            </div>    
         </div>
         
         <div v-if="data == 'unranked'">
@@ -45,15 +50,20 @@ export default {
 .back{
     background-color: white;
     width: 350px;
-    height:335px;
+    height:150px;
     border-radius: 0.4rem;
     color: black;
     font-family: 'Gothic A1';
 }
+.text{
+    position: absolute;
+    left:150px;
+    top:35px;
+}
 .back div{
-    font-size: 20px;
+    font-size: 15px;
 }
 .tier img{
-    width:200px;
+    width:120px;
 }
 </style>

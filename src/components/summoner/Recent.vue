@@ -13,9 +13,10 @@ export default {
 <style scoped>
 .back{
     background-color: white;
-    width: 735px;
-    height:320px;
+    width: 650px;
+    height:150px;
     border-radius: 0.4rem;
     color: black;
+    font-family: 'Gothic A1';
 }
 </style>

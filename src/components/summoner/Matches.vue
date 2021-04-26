@@ -11,8 +11,8 @@ export default {
 <style scoped>
 .back{
     background-color: white;
-    width: 700px;
-    height:690px;
+    width: 650px;
+    height:3000px;
     border-radius: 0.4rem;
     color: black;
 }
