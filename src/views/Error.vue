@@ -7,6 +7,8 @@
         <div class="msg">
             <span v-if="$store.state.items == '403'">현재 DODG.ORG 서비스를 이용하실 수 없습니다.</span> 
             <span v-if="$store.state.items == '404'">{{$store.state.searchName}} 에 대한 검색 결과가 없습니다.</span>
+            <span v-if="$store.state.items == '429'">요청이 너무 많습니다.</span> 
+
         </div>
     </div>
 </div>

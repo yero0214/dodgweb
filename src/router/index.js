@@ -34,11 +34,11 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  if ((to.name == 'Summoner' && store.state.items == '403')||(to.name == 'Summoner' && store.state.items == '404')) next({ name: 'Error' })
+  if ((to.name == 'Summoner') && (store.state.items == '403' || store.state.items == '404' || store.state.items == '429')) next({ name: 'Error' })
   else next()
 })
 router.beforeEach((to, from, next) => {
-  if ((to.name == 'Error' && store.state.items != '403' && store.state.items != '404')) next({ name: 'Summoner' })
+  if ((to.name == 'Error' && store.state.items != '403' && store.state.items != '404' && store.state.items != '429')) next({ name: 'Summoner' })
   else next()
 })
 export default router

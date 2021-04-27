@@ -77,14 +77,14 @@ export default {
 .solo{
     position: absolute;
     left: 35px;
-    top: 300px;
+    top: 250px;
     /* height:150px; */
     font-size: 40px;
 }
 .flex{
     position: absolute;
     left: 35px;
-    top: 465px;
+    top: 415px;
     font-size: 40px;
 }
 .matches{

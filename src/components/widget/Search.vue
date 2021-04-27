@@ -25,7 +25,7 @@ export default {
           }
         else {
           await this.$store.dispatch('search',this.name);
-          if(this.$store.state.items == '404' || this.$store.state.items == '403'){
+          if(this.$store.state.items == '404' || this.$store.state.items == '403' || this.$store.state.items == '429'){
             this.$store.state.searchName = this.name;
             
             if(this.$router.currentRoute.path == '/error'){

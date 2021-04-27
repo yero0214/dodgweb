@@ -3,7 +3,7 @@
         <div v-if="data != 'unranked'">
             
             <div class="tier">
-                <img :src="require(`@/assets/tier/${data.tier}.png`)"/>
+                <img :src="require(`@/assets/tier/${tier}.png`)"/>
                 
             </div>
             <div class="text">
@@ -36,6 +36,20 @@
 export default {
     props:['type'],
     computed:{
+        tier(){
+            if(this.$store.getters.getTier[this.type].tier == 'IRON')return 'Iron'
+            else if(this.$store.getters.getTier[this.type].tier == 'BRONZE')return 'Bronze'
+            else if(this.$store.getters.getTier[this.type].tier == 'SILVER')return 'Silver'
+            else if(this.$store.getters.getTier[this.type].tier == 'GOLD')return 'Gold'
+            else if(this.$store.getters.getTier[this.type].tier == 'PLATINUM')return 'Platinum'
+            else if(this.$store.getters.getTier[this.type].tier == 'DIAMOND')return 'Diamond'
+            else if(this.$store.getters.getTier[this.type].tier == 'MASTER')return 'Master'
+            else if(this.$store.getters.getTier[this.type].tier == 'GRANDMASTER')return 'Grandmaster'
+            else if(this.$store.getters.getTier[this.type].tier == 'CHALLENGER')return 'Challenger'
+            else{
+                return 'none';
+            }
+        },
         data(){
             return this.$store.getters.getTier[this.type];
         },
